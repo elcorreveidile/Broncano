@@ -1269,158 +1269,173 @@
             const magenta = [255, 0, 255];
             const cyan = [0, 255, 255];
             const verde = [57, 255, 20];
+            const negro = [10, 10, 10];
 
-            // Header con gradiente simulado
-            doc.setFillColor(10, 10, 10);
-            doc.rect(0, 0, 210, 40, 'F');
+            // Header con fondo oscuro
+            doc.setFillColor(negro[0], negro[1], negro[2]);
+            doc.rect(0, 0, 210, 45, 'F');
 
             // Logo "La Revuelta" estilizado
-            doc.setFontSize(28);
+            doc.setFontSize(32);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(magenta[0], magenta[1], magenta[2]);
-            doc.text('🎬 LA REVUELTA', 105, 15, { align: 'center' });
+            doc.text('LA REVUELTA', 105, 18, { align: 'center' });
 
-            doc.setFontSize(16);
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'normal');
             doc.setTextColor(cyan[0], cyan[1], cyan[2]);
-            doc.text('Informe de las Dos Preguntas', 105, 25, { align: 'center' });
+            doc.text('Informe de las Dos Preguntas Clasicas', 105, 28, { align: 'center' });
 
-            doc.setFontSize(10);
-            doc.setTextColor(150, 150, 150);
-            doc.text(`Generado el ${fecha}`, 105, 35, { align: 'center' });
+            doc.setFontSize(9);
+            doc.setTextColor(200, 200, 200);
+            doc.text('Generado el ' + fecha, 105, 38, { align: 'center' });
 
             // Línea separadora
             doc.setDrawColor(magenta[0], magenta[1], magenta[2]);
-            doc.setLineWidth(0.5);
-            doc.line(20, 42, 190, 42);
+            doc.setLineWidth(1);
+            doc.line(20, 47, 190, 47);
 
-            let y = 55;
+            let y = 62;
 
             // Sección Patrimonio
-            doc.setFontSize(18);
+            doc.setFontSize(16);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(magenta[0], magenta[1], magenta[2]);
-            doc.text('💰 PREGUNTA 1: ¿CUÁNTO DINERO TIENES?', 20, y);
-            y += 10;
+            doc.text('PREGUNTA 1: CUANTO DINERO TIENES?', 20, y);
+            y += 12;
 
             doc.setFillColor(245, 245, 245);
-            doc.roundedRect(20, y, 170, 20, 3, 3, 'F');
+            doc.roundedRect(20, y, 170, 22, 3, 3, 'F');
 
-            doc.setFontSize(24);
+            doc.setFontSize(28);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(verde[0], verde[1], verde[2]);
-            doc.text(formatearNumero(patrimonio) + ' €', 105, y + 13, { align: 'center' });
-            y += 30;
+            const patrimonioTexto = formatearNumero(patrimonio).replace(/\./g, ',') + ' EUR';
+            doc.text(patrimonioTexto, 105, y + 15, { align: 'center' });
+            y += 35;
 
             // Sección Relaciones
-            doc.setFontSize(18);
+            doc.setFontSize(16);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(cyan[0], cyan[1], cyan[2]);
-            doc.text('🔥 PREGUNTA 2: ¿CUÁNTAS VECES ESTE MES?', 20, y);
-            y += 10;
+            doc.text('PREGUNTA 2: CUANTAS VECES ESTE MES?', 20, y);
+            y += 12;
 
             doc.setFillColor(245, 245, 245);
-            doc.roundedRect(20, y, 170, 20, 3, 3, 'F');
+            doc.roundedRect(20, y, 170, 22, 3, 3, 'F');
 
-            doc.setFontSize(24);
+            doc.setFontSize(28);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(verde[0], verde[1], verde[2]);
-            doc.text(relacionesPuntos.toFixed(1) + ' pts', 105, y + 13, { align: 'center' });
-            y += 30;
+            doc.text(relacionesPuntos.toFixed(1).replace('.', ',') + ' puntos', 105, y + 15, { align: 'center' });
+            y += 35;
 
             // Línea separadora
             doc.setDrawColor(cyan[0], cyan[1], cyan[2]);
+            doc.setLineWidth(0.5);
             doc.line(20, y, 190, y);
-            y += 10;
+            y += 12;
 
             // Estadísticas
-            doc.setFontSize(16);
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(magenta[0], magenta[1], magenta[2]);
-            doc.text('📊 ESTADÍSTICAS', 20, y);
-            y += 8;
+            doc.text('ESTADISTICAS', 20, y);
+            y += 10;
 
-            doc.setFontSize(11);
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
             doc.setTextColor(0, 0, 0);
 
             const estadisticas = [
-                ['Total Histórico:', stats.totalRelaciones.toFixed(1) + ' pts'],
-                ['Mejor Mes:', stats.mejorMes > 0 ? stats.mejorMes.toFixed(1) + ' pts' : '-'],
-                ['Promedio Mensual:', promedioMensual + ' pts'],
-                ['Mejor Racha:', stats.mejorRacha + ' días consecutivos'],
+                ['Total Historico:', stats.totalRelaciones.toFixed(1).replace('.', ',') + ' pts'],
+                ['Mejor Mes:', stats.mejorMes > 0 ? stats.mejorMes.toFixed(1).replace('.', ',') + ' pts' : '-'],
+                ['Promedio Mensual:', promedioMensual.replace('.', ',') + ' pts'],
+                ['Mejor Racha:', stats.mejorRacha + ' dias consecutivos'],
                 ['Meses Registrados:', historial.length.toString()]
             ];
 
             estadisticas.forEach(([label, value]) => {
-                doc.setTextColor(100, 100, 100);
+                doc.setTextColor(80, 80, 80);
+                doc.setFont('helvetica', 'bold');
                 doc.text(label, 25, y);
                 doc.setTextColor(0, 0, 0);
-                doc.text(value, 105, y);
-                y += 6;
+                doc.setFont('helvetica', 'normal');
+                doc.text(value, 110, y);
+                y += 7;
             });
 
-            y += 5;
+            y += 8;
 
             // Logros
-            doc.setFontSize(16);
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
             doc.setTextColor(magenta[0], magenta[1], magenta[2]);
-            doc.text('🏆 LOGROS DESBLOQUEADOS', 20, y);
-            y += 8;
+            doc.text('LOGROS DESBLOQUEADOS', 20, y);
+            y += 10;
 
-            doc.setFontSize(11);
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
             doc.setTextColor(0, 0, 0);
-            doc.text(`${logrosConseguidos} de ${logrosDefinicion.length} logros conseguidos`, 25, y);
+            doc.text(logrosConseguidos + ' de ' + logrosDefinicion.length + ' logros conseguidos', 25, y);
             y += 8;
 
-            // Mostrar logros desbloqueados
-            const logrosTexto = logrosDesbloqueados.map(id => {
-                const logro = logrosDefinicion.find(l => l.id === id);
-                return logro ? `${logro.icono} ${logro.nombre}` : '';
-            }).filter(t => t);
+            // Mostrar logros desbloqueados (sin emojis)
+            if (logrosDesbloqueados.length > 0) {
+                const logrosTexto = logrosDesbloqueados.map(id => {
+                    const logro = logrosDefinicion.find(l => l.id === id);
+                    return logro ? logro.nombre : '';
+                }).filter(t => t);
 
-            let logrosLinea = '';
-            logrosTexto.forEach((logro, index) => {
-                if (logrosLinea.length + logro.length > 50) {
-                    doc.setFontSize(9);
-                    doc.setTextColor(verde[0], verde[1], verde[2]);
-                    doc.text(logrosLinea, 25, y);
-                    y += 5;
-                    logrosLinea = logro + '  ';
-                } else {
-                    logrosLinea += logro + '  ';
-                }
-            });
-            if (logrosLinea) {
                 doc.setFontSize(9);
                 doc.setTextColor(verde[0], verde[1], verde[2]);
-                doc.text(logrosLinea, 25, y);
-                y += 8;
+                doc.setFont('helvetica', 'bold');
+
+                logrosTexto.forEach((nombre, index) => {
+                    if (y > 265) return; // No pasarse de la página
+                    const marca = String.fromCharCode(149); // Bullet point
+                    doc.text(marca + ' ' + nombre, 25, y);
+                    y += 5;
+                });
+                y += 5;
             }
 
-            // Historial (últimos 5 meses)
+            // Historial (últimos 6 meses)
             if (historial.length > 0 && y < 250) {
-                y += 3;
-                doc.setFontSize(16);
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
                 doc.setTextColor(cyan[0], cyan[1], cyan[2]);
-                doc.text('📈 HISTORIAL RECIENTE', 20, y);
-                y += 8;
+                doc.text('HISTORIAL RECIENTE', 20, y);
+                y += 10;
 
-                doc.setFontSize(10);
-                const historialReciente = historial.slice(-5).reverse();
+                doc.setFontSize(9);
+                doc.setFont('helvetica', 'normal');
+                const historialReciente = historial.slice(-6).reverse();
+
                 historialReciente.forEach(h => {
                     if (y > 270) return; // No pasarse de la página
-                    doc.setTextColor(100, 100, 100);
+                    doc.setTextColor(80, 80, 80);
+                    doc.setFont('helvetica', 'bold');
                     doc.text(h.fecha, 25, y);
                     doc.setTextColor(0, 0, 0);
-                    doc.text(`${h.puntos.toFixed(1)} pts`, 60, y);
-                    doc.text(`${formatearNumero(h.patrimonio)} €`, 100, y);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(h.puntos.toFixed(1).replace('.', ',') + ' pts', 65, y);
+                    doc.text(formatearNumero(h.patrimonio).replace(/\./g, ',') + ' EUR', 115, y);
                     y += 6;
                 });
             }
 
             // Footer
-            doc.setFontSize(8);
-            doc.setTextColor(150, 150, 150);
-            doc.text('Diseñado y desarrollado por Javier Benítez Láinez (@jabelainez)', 105, 285, { align: 'center' });
+            doc.setFontSize(7);
+            doc.setTextColor(120, 120, 120);
+            doc.setFont('helvetica', 'italic');
+            doc.text('Disenado y desarrollado por Javier Benitez Lainez (@jabelainez)', 105, 285, { align: 'center' });
             doc.text('Inspirado en "La Revuelta" de David Broncano', 105, 290, { align: 'center' });
 
             // Guardar PDF
-            doc.save(`broncano-informe-${new Date().toISOString().split('T')[0]}.pdf`);
+            doc.save('broncano-informe-' + new Date().toISOString().split('T')[0] + '.pdf');
 
-            mostrarFraseBroncano('¡Tremendo dato! PDF generado 📄');
+            mostrarFraseBroncano('Tremendo dato! PDF generado');
         }
 
         function importarDatos(input) {
