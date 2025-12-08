@@ -22,8 +22,28 @@
             align-items: center;
         }
 
+        body.panic-mode {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        body.panic-mode .container {
+            display: none;
+        }
+
+        body.panic-mode::after {
+            content: 'Excel - Presupuesto Anual 2024';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: #000;
+            font-family: Arial, sans-serif;
+        }
+
         .container {
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
         }
 
@@ -31,6 +51,26 @@
             text-align: center;
             margin-bottom: 40px;
             animation: fadeInDown 0.8s ease;
+            position: relative;
+        }
+
+        .panic-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255, 0, 0, 0.3);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.3s;
+        }
+
+        .panic-btn:hover {
+            background: rgba(255, 0, 0, 0.6);
+            color: #fff;
         }
 
         h1 {
@@ -49,6 +89,17 @@
             color: #00ffff;
             font-size: 1.2em;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .broncano-quote {
+            background: rgba(255, 0, 255, 0.1);
+            border-left: 4px solid #ff00ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
         }
 
         .section {
@@ -226,6 +277,17 @@
             box-shadow: 0 5px 25px rgba(255, 102, 0, 0.8);
         }
 
+        .btn-special {
+            background: linear-gradient(45deg, #9400d3, #4b0082);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(148, 0, 211, 0.5);
+        }
+
+        .btn-special:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(148, 0, 211, 0.8);
+        }
+
         .input-group {
             display: flex;
             gap: 10px;
@@ -263,6 +325,12 @@
             border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .point-card:hover {
+            transform: translateY(-5px);
+            border-color: #39ff14;
         }
 
         .point-label {
@@ -275,6 +343,168 @@
             font-size: 1.5em;
             font-weight: bold;
             color: #39ff14;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .achievement {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            opacity: 0.4;
+        }
+
+        .achievement.unlocked {
+            opacity: 1;
+            border-color: #39ff14;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .achievement-icon {
+            font-size: 2.5em;
+            margin-bottom: 8px;
+        }
+
+        .achievement-name {
+            font-size: 0.8em;
+            color: #888;
+            margin-bottom: 3px;
+        }
+
+        .achievement.unlocked .achievement-name {
+            color: #39ff14;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #39ff14;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 5% auto;
+            padding: 40px;
+            border: 2px solid #ff00ff;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.5);
+            animation: slideIn 0.3s;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #ff00ff;
+        }
+
+        .modal-title {
+            color: #ff00ff;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #000;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+            z-index: 2000;
+            animation: slideInRight 0.5s, pulse 1s infinite;
+            font-weight: bold;
+            max-width: 300px;
+        }
+
+        .notification-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            height: 30px;
+            margin: 15px 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #39ff14, #00cc00);
+            height: 100%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .history-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #39ff14;
         }
 
         footer {
@@ -319,6 +549,33 @@
             }
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         .pulse {
             animation: pulse 0.5s ease;
         }
@@ -350,15 +607,33 @@
                 padding: 12px 20px;
                 font-size: 1em;
             }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .panic-btn {
+                position: relative;
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
+            <button class="panic-btn" onclick="togglePanicMode()">🚨 MODO PÁNICO</button>
             <h1>🎬 BRONCANO APP</h1>
             <div class="subtitle">Las Dos Preguntas Clásicas</div>
         </header>
+
+        <!-- Frase de Broncano -->
+        <div class="broncano-quote" id="broncanoQuote">
+            "¿Pero cuántas veces?"
+        </div>
 
         <!-- Sección Patrimonio -->
         <div class="section">
@@ -371,6 +646,8 @@
                 </div>
             </div>
 
+            <div id="patrimonioGoal"></div>
+
             <div class="input-group">
                 <input type="number" id="patrimonioInput" placeholder="Cantidad (€)" value="1000" min="0" step="100">
             </div>
@@ -381,6 +658,12 @@
                 </button>
                 <button class="btn btn-subtract" onclick="modificarPatrimonio(false)">
                     <span><span class="emoji">➖</span> Restar</span>
+                </button>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-special" onclick="mostrarModalObjetivos('patrimonio')" style="width: 100%;">
+                    <span><span class="emoji">🎯</span> Establecer Objetivo</span>
                 </button>
             </div>
         </div>
@@ -395,6 +678,8 @@
                     <span id="relacionesDisplay">0</span><span class="display-currency">pts</span>
                 </div>
             </div>
+
+            <div id="relacionesGoal"></div>
 
             <div class="points-info">
                 <div class="point-card">
@@ -424,10 +709,48 @@
             </div>
 
             <div class="controls">
-                <button class="btn btn-reset" onclick="resetRelaciones()">
-                    <span><span class="emoji">🔄</span> Reset Mensual</span>
+                <button class="btn btn-special" onclick="mostrarModalObjetivos('relaciones')" style="flex: 1;">
+                    <span><span class="emoji">🎯</span> Objetivo</span>
+                </button>
+                <button class="btn btn-reset" onclick="resetRelaciones()" style="flex: 1;">
+                    <span><span class="emoji">🔄</span> Reset</span>
                 </button>
             </div>
+        </div>
+
+        <!-- Sección Logros -->
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">🏆</span> LOGROS Y PREMIOS</h2>
+            <div class="achievements-grid" id="achievementsGrid"></div>
+        </div>
+
+        <!-- Sección Estadísticas -->
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">📊</span> ESTADÍSTICAS</h2>
+            <div class="stats-grid" id="statsGrid"></div>
+            <div class="controls" style="margin-top: 20px;">
+                <button class="btn btn-special" onclick="mostrarModalHistorial()">
+                    <span><span class="emoji">📈</span> Ver Historial</span>
+                </button>
+                <button class="btn btn-special" onclick="mostrarModalCalculadora()">
+                    <span><span class="emoji">🧮</span> Calculadora</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sección Utilidades -->
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">⚙️</span> UTILIDADES</h2>
+            <div class="controls">
+                <button class="btn btn-special" onclick="exportarDatos()">
+                    <span><span class="emoji">💾</span> Exportar</span>
+                </button>
+                <button class="btn btn-special" onclick="document.getElementById('importFile').click()">
+                    <span><span class="emoji">📂</span> Importar</span>
+                </button>
+            </div>
+            <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importarDatos(this)">
+            <div id="comparadorInfo" style="margin-top: 20px; text-align: center; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px;"></div>
         </div>
 
         <footer>
@@ -437,18 +760,112 @@
         </footer>
     </div>
 
+    <!-- Modales -->
+    <div id="achievementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('achievementModal')">&times;</span>
+            <h2 class="modal-title">🎉 ¡LOGRO DESBLOQUEADO!</h2>
+            <div id="achievementContent"></div>
+        </div>
+    </div>
+
+    <div id="historialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('historialModal')">&times;</span>
+            <h2 class="modal-title">📈 HISTORIAL MENSUAL</h2>
+            <div id="historialContent"></div>
+        </div>
+    </div>
+
+    <div id="calculadoraModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('calculadoraModal')">&times;</span>
+            <h2 class="modal-title">🧮 CALCULADORA DE PROYECCIONES</h2>
+            <div id="calculadoraContent"></div>
+        </div>
+    </div>
+
+    <div id="objetivosModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('objetivosModal')">&times;</span>
+            <h2 class="modal-title">🎯 ESTABLECER OBJETIVO</h2>
+            <div id="objetivosContent"></div>
+        </div>
+    </div>
+
     <script>
-        // Cargar datos al iniciar
+        // ===== DATOS Y CONFIGURACIÓN =====
         let patrimonio = parseFloat(localStorage.getItem('broncano_patrimonio')) || 0;
         let relacionesPuntos = parseFloat(localStorage.getItem('broncano_relaciones')) || 0;
+        let logrosDesbloqueados = JSON.parse(localStorage.getItem('broncano_logros')) || [];
+        let historial = JSON.parse(localStorage.getItem('broncano_historial')) || [];
+        let objetivos = JSON.parse(localStorage.getItem('broncano_objetivos')) || {};
+        let stats = JSON.parse(localStorage.getItem('broncano_stats')) || {
+            totalRelaciones: 0,
+            mejorMes: 0,
+            peorMes: Infinity,
+            rachaActual: 0,
+            mejorRacha: 0,
+            ultimaActividad: null
+        };
 
-        // Actualizar displays
+        const frasesBroncano = [
+            "¡Eso es dinero!",
+            "¿Pero cuántas veces?",
+            "Tremendo dato",
+            "No me lo creo",
+            "Eso sí que es interesante",
+            "Ahí está la clave",
+            "Muy fuerte",
+            "No puede ser",
+            "Increíble",
+            "Eso hay que celebrarlo",
+            "Qué barbaridad",
+            "Me encanta este dato",
+            "Brutal",
+            "Esto es oro puro",
+            "Fantástico",
+            "No tiene precio",
+            "Maravilloso",
+            "Espectacular"
+        ];
+
+        const logrosDefinicion = [
+            // Logros de Patrimonio
+            { id: 'mileurista', nombre: 'El Mileurista', icono: '💸', condicion: () => patrimonio >= 1000, descripcion: 'Alcanzar 1.000€' },
+            { id: 'clasemedia', nombre: 'Clase Media', icono: '💰', condicion: () => patrimonio >= 10000, descripcion: 'Alcanzar 10.000€' },
+            { id: 'banquero', nombre: 'El Banquero', icono: '🏦', condicion: () => patrimonio >= 100000, descripcion: 'Alcanzar 100.000€' },
+            { id: 'millonario', nombre: 'Amancio Ortega', icono: '👑', condicion: () => patrimonio >= 1000000, descripcion: 'Alcanzar 1.000.000€' },
+            { id: 'ruina', nombre: 'En la ruina', icono: '📉', condicion: () => patrimonio < 0, descripcion: 'Caer en números negativos' },
+
+            // Logros de Actividad
+            { id: 'calenton', nombre: 'Calentón', icono: '🔥', condicion: () => relacionesPuntos >= 10, descripcion: '10 puntos en un mes' },
+            { id: 'maquina', nombre: 'Máquina', icono: '💪', condicion: () => relacionesPuntos >= 20, descripcion: '20 puntos en un mes' },
+            { id: 'conejo', nombre: 'Conejo de campo', icono: '🐰', condicion: () => relacionesPuntos >= 30, descripcion: '30+ puntos en un mes' },
+            { id: 'monje', nombre: 'Monje Shaolin', icono: '😴', condicion: () => relacionesPuntos === 0 && historial.length > 0, descripcion: '0 puntos en un mes' },
+            { id: 'equilibrado', nombre: 'Equilibrado', icono: '🎯', condicion: () => relacionesPuntos === 15, descripcion: 'Exactamente 15 puntos' },
+
+            // Easter Eggs
+            { id: 'nice', nombre: 'Nice', icono: '😏', condicion: () => relacionesPuntos === 6.9 || Math.floor(relacionesPuntos) === 69, descripcion: 'Alcanzar 6.9 o 69 puntos' },
+            { id: 'blazeit', nombre: 'Blaze It', icono: '🌿', condicion: () => patrimonio === 420 || Math.floor(patrimonio) === 420, descripcion: 'Patrimonio de 420€' },
+
+            // Logros de Constancia
+            { id: 'primerdia', nombre: 'Primer Día', icono: '🎬', condicion: () => true, descripcion: 'Usar la app por primera vez' },
+            { id: 'dedicado', nombre: 'Dedicado', icono: '⭐', condicion: () => historial.length >= 3, descripcion: 'Registrar 3 meses' },
+            { id: 'veterano', nombre: 'Veterano', icono: '🏅', condicion: () => historial.length >= 12, descripcion: 'Registrar 12 meses' }
+        ];
+
+        // ===== FUNCIONES PRINCIPALES =====
         function actualizarDisplays() {
             document.getElementById('patrimonioDisplay').textContent = formatearNumero(patrimonio);
             document.getElementById('relacionesDisplay').textContent = relacionesPuntos.toFixed(1);
+            actualizarFraseBroncano();
+            verificarLogros();
+            actualizarStats();
+            actualizarComparador();
+            mostrarObjetivos();
         }
 
-        // Formatear números con separadores de miles
         function formatearNumero(num) {
             return new Intl.NumberFormat('es-ES', {
                 minimumFractionDigits: 0,
@@ -456,7 +873,6 @@
             }).format(num);
         }
 
-        // Modificar patrimonio
         function modificarPatrimonio(esAñadir) {
             const input = document.getElementById('patrimonioInput');
             const cantidad = parseFloat(input.value) || 0;
@@ -472,10 +888,8 @@
                 patrimonio -= cantidad;
             }
 
-            // Guardar en localStorage
             localStorage.setItem('broncano_patrimonio', patrimonio);
 
-            // Actualizar display con animación
             const display = document.querySelector('.section:first-of-type .display');
             display.classList.add('pulse');
             setTimeout(() => display.classList.remove('pulse'), 500);
@@ -483,58 +897,436 @@
             actualizarDisplays();
         }
 
-        // Agregar relación
         function agregarRelacion(puntos) {
             relacionesPuntos += puntos;
+            stats.totalRelaciones += puntos;
 
-            // Guardar en localStorage
+            // Actualizar racha
+            const hoy = new Date().toDateString();
+            if (stats.ultimaActividad !== hoy) {
+                stats.rachaActual++;
+                stats.ultimaActividad = hoy;
+                if (stats.rachaActual > stats.mejorRacha) {
+                    stats.mejorRacha = stats.rachaActual;
+                }
+            }
+
             localStorage.setItem('broncano_relaciones', relacionesPuntos);
+            localStorage.setItem('broncano_stats', JSON.stringify(stats));
 
-            // Actualizar display con animación
             const display = document.querySelector('.section:nth-of-type(2) .display');
             display.classList.add('pulse');
             setTimeout(() => display.classList.remove('pulse'), 500);
 
             actualizarDisplays();
 
-            // Mensaje de confirmación
             let tipo = puntos === 0.3 ? 'Petting' : puntos === 0.5 ? 'Masturbación' : 'Relación Completa';
             console.log(`✅ ${tipo} añadido (+${puntos} pts)`);
         }
 
-        // Reset relaciones (mensual)
         function resetRelaciones() {
-            if (confirm('¿Estás seguro de que quieres reiniciar el contador de relaciones? Esta acción no se puede deshacer.')) {
+            if (confirm('¿Estás seguro de que quieres reiniciar el contador de relaciones? Se guardará en el historial.')) {
+                // Guardar en historial
+                const fecha = new Date();
+                const mesAnio = `${fecha.getMonth() + 1}/${fecha.getFullYear()}`;
+                historial.push({
+                    fecha: mesAnio,
+                    puntos: relacionesPuntos,
+                    patrimonio: patrimonio
+                });
+
+                // Actualizar estadísticas
+                if (relacionesPuntos > stats.mejorMes) stats.mejorMes = relacionesPuntos;
+                if (relacionesPuntos < stats.peorMes) stats.peorMes = relacionesPuntos;
+
+                localStorage.setItem('broncano_historial', JSON.stringify(historial));
+                localStorage.setItem('broncano_stats', JSON.stringify(stats));
+
                 relacionesPuntos = 0;
                 localStorage.setItem('broncano_relaciones', relacionesPuntos);
                 actualizarDisplays();
-                alert('¡Contador reiniciado! Nuevo mes, nuevas oportunidades 😏');
+
+                mostrarFraseBroncano('¡Contador reiniciado! Nuevo mes, nuevas oportunidades 😏');
             }
         }
 
-        // Permitir Enter en el input de patrimonio
+        // ===== SISTEMA DE LOGROS =====
+        function verificarLogros() {
+            logrosDefinicion.forEach(logro => {
+                if (!logrosDesbloqueados.includes(logro.id) && logro.condicion()) {
+                    desbloquearLogro(logro);
+                }
+            });
+            mostrarLogros();
+        }
+
+        function desbloquearLogro(logro) {
+            logrosDesbloqueados.push(logro.id);
+            localStorage.setItem('broncano_logros', JSON.stringify(logrosDesbloqueados));
+            mostrarNotificacionLogro(logro);
+        }
+
+        function mostrarNotificacionLogro(logro) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <div class="notification-icon">${logro.icono}</div>
+                <div><strong>¡LOGRO DESBLOQUEADO!</strong></div>
+                <div>${logro.nombre}</div>
+                <div style="font-size: 0.9em; margin-top: 5px;">${logro.descripcion}</div>
+            `;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+
+            mostrarFraseBroncano('¡' + frasesBroncano[Math.floor(Math.random() * frasesBroncano.length)] + '!');
+        }
+
+        function mostrarLogros() {
+            const grid = document.getElementById('achievementsGrid');
+            grid.innerHTML = logrosDefinicion.map(logro => `
+                <div class="achievement ${logrosDesbloqueados.includes(logro.id) ? 'unlocked' : ''}">
+                    <div class="achievement-icon">${logro.icono}</div>
+                    <div class="achievement-name">${logro.nombre}</div>
+                </div>
+            `).join('');
+        }
+
+        // ===== FRASES DE BRONCANO =====
+        function actualizarFraseBroncano() {
+            const frase = frasesBroncano[Math.floor(Math.random() * frasesBroncano.length)];
+            mostrarFraseBroncano(frase);
+        }
+
+        function mostrarFraseBroncano(frase) {
+            const quoteElement = document.getElementById('broncanoQuote');
+            quoteElement.textContent = `"${frase}"`;
+            quoteElement.style.animation = 'none';
+            setTimeout(() => {
+                quoteElement.style.animation = 'fadeIn 0.5s ease';
+            }, 10);
+        }
+
+        // ===== ESTADÍSTICAS =====
+        function actualizarStats() {
+            const statsGrid = document.getElementById('statsGrid');
+            const promedio = historial.length > 0
+                ? (historial.reduce((sum, h) => sum + h.puntos, 0) / historial.length).toFixed(1)
+                : '0.0';
+
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">Total Histórico</div>
+                    <div class="stat-value">${stats.totalRelaciones.toFixed(1)}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Mejor Mes</div>
+                    <div class="stat-value">${stats.mejorMes > 0 ? stats.mejorMes.toFixed(1) : '-'}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Promedio Mensual</div>
+                    <div class="stat-value">${promedio}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Mejor Racha</div>
+                    <div class="stat-value">${stats.mejorRacha} días</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Meses Registrados</div>
+                    <div class="stat-value">${historial.length}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Logros Desbloqueados</div>
+                    <div class="stat-value">${logrosDesbloqueados.length}/${logrosDefinicion.length}</div>
+                </div>
+            `;
+        }
+
+        // ===== COMPARADOR ANÓNIMO =====
+        function actualizarComparador() {
+            const comparador = document.getElementById('comparadorInfo');
+            let mensaje = '';
+
+            if (relacionesPuntos < 5) {
+                mensaje = '🐌 Modo monje: Estás en el 20% más tranquilo';
+            } else if (relacionesPuntos < 10) {
+                mensaje = '😊 Normalito: En el rango del 40% de usuarios';
+            } else if (relacionesPuntos < 20) {
+                mensaje = '🔥 Activo: Top 30% de usuarios';
+            } else if (relacionesPuntos < 30) {
+                mensaje = '💪 Muy activo: Top 15% de usuarios';
+            } else {
+                mensaje = '🐰 Leyenda: Top 5% de usuarios. ¡Increíble!';
+            }
+
+            comparador.innerHTML = `<strong>Tu nivel:</strong> ${mensaje}`;
+        }
+
+        // ===== OBJETIVOS =====
+        function mostrarModalObjetivos(tipo) {
+            const modal = document.getElementById('objetivosModal');
+            const content = document.getElementById('objetivosContent');
+            const actual = tipo === 'patrimonio' ? patrimonio : relacionesPuntos;
+            const objetivo = objetivos[tipo] || 0;
+
+            content.innerHTML = `
+                <p style="margin-bottom: 20px;">Define tu objetivo de ${tipo === 'patrimonio' ? 'patrimonio' : 'puntos mensuales'}</p>
+                <div class="input-group">
+                    <input type="number" id="objetivoInput" value="${objetivo}" min="0" step="${tipo === 'patrimonio' ? '100' : '1'}" style="width: 100%;">
+                </div>
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-add" onclick="guardarObjetivo('${tipo}')" style="width: 100%;">
+                        <span>Guardar Objetivo</span>
+                    </button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button class="btn btn-subtract" onclick="eliminarObjetivo('${tipo}')" style="width: 100%;">
+                        <span>Eliminar Objetivo</span>
+                    </button>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+        }
+
+        function guardarObjetivo(tipo) {
+            const valor = parseFloat(document.getElementById('objetivoInput').value);
+            if (valor > 0) {
+                objetivos[tipo] = valor;
+                localStorage.setItem('broncano_objetivos', JSON.stringify(objetivos));
+                cerrarModal('objetivosModal');
+                actualizarDisplays();
+                mostrarFraseBroncano('¡Objetivo establecido! A por ello 💪');
+            }
+        }
+
+        function eliminarObjetivo(tipo) {
+            delete objetivos[tipo];
+            localStorage.setItem('broncano_objetivos', JSON.stringify(objetivos));
+            cerrarModal('objetivosModal');
+            actualizarDisplays();
+        }
+
+        function mostrarObjetivos() {
+            // Objetivo de patrimonio
+            const patrimonioGoalDiv = document.getElementById('patrimonioGoal');
+            if (objetivos.patrimonio) {
+                const progreso = Math.min((patrimonio / objetivos.patrimonio) * 100, 100);
+                patrimonioGoalDiv.innerHTML = `
+                    <div style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="font-size: 0.9em; color: #888;">Objetivo: ${formatearNumero(objetivos.patrimonio)}€</span>
+                            <span style="font-size: 0.9em; color: #39ff14;">${progreso.toFixed(0)}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progreso}%;">
+                                ${progreso >= 20 ? progreso.toFixed(0) + '%' : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                patrimonioGoalDiv.innerHTML = '';
+            }
+
+            // Objetivo de relaciones
+            const relacionesGoalDiv = document.getElementById('relacionesGoal');
+            if (objetivos.relaciones) {
+                const progreso = Math.min((relacionesPuntos / objetivos.relaciones) * 100, 100);
+                relacionesGoalDiv.innerHTML = `
+                    <div style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="font-size: 0.9em; color: #888;">Objetivo: ${objetivos.relaciones} pts</span>
+                            <span style="font-size: 0.9em; color: #39ff14;">${progreso.toFixed(0)}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progreso}%;">
+                                ${progreso >= 20 ? progreso.toFixed(0) + '%' : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                relacionesGoalDiv.innerHTML = '';
+            }
+        }
+
+        // ===== HISTORIAL =====
+        function mostrarModalHistorial() {
+            const modal = document.getElementById('historialModal');
+            const content = document.getElementById('historialContent');
+
+            if (historial.length === 0) {
+                content.innerHTML = '<p style="text-align: center; color: #888;">Aún no hay historial. ¡Completa tu primer mes!</p>';
+            } else {
+                content.innerHTML = historial.slice().reverse().map(h => `
+                    <div class="history-item">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <strong>${h.fecha}</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>🔥 Puntos: ${h.puntos.toFixed(1)}</span>
+                            <span>💰 Patrimonio: ${formatearNumero(h.patrimonio)}€</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            modal.style.display = 'block';
+        }
+
+        // ===== CALCULADORA =====
+        function mostrarModalCalculadora() {
+            const modal = document.getElementById('calculadoraModal');
+            const content = document.getElementById('calculadoraContent');
+
+            const promedioMensual = historial.length > 0
+                ? historial.reduce((sum, h) => sum + h.puntos, 0) / historial.length
+                : relacionesPuntos;
+
+            const proyeccion3meses = relacionesPuntos + (promedioMensual * 3);
+            const proyeccion6meses = relacionesPuntos + (promedioMensual * 6);
+            const proyeccion12meses = relacionesPuntos + (promedioMensual * 12);
+
+            content.innerHTML = `
+                <div class="stat-card" style="margin-bottom: 20px;">
+                    <div class="stat-label">Promedio Mensual</div>
+                    <div class="stat-value">${promedioMensual.toFixed(1)} pts</div>
+                </div>
+
+                <h3 style="color: #00ffff; margin: 20px 0 15px 0;">📈 Proyecciones</h3>
+
+                <div class="history-item">
+                    <strong>En 3 meses</strong>
+                    <div class="stat-value" style="font-size: 1.5em;">${proyeccion3meses.toFixed(1)} pts</div>
+                </div>
+
+                <div class="history-item">
+                    <strong>En 6 meses</strong>
+                    <div class="stat-value" style="font-size: 1.5em;">${proyeccion6meses.toFixed(1)} pts</div>
+                </div>
+
+                <div class="history-item">
+                    <strong>En 12 meses</strong>
+                    <div class="stat-value" style="font-size: 1.5em;">${proyeccion12meses.toFixed(1)} pts</div>
+                </div>
+
+                <p style="margin-top: 20px; color: #888; font-size: 0.9em; text-align: center;">
+                    * Proyecciones basadas en tu promedio actual
+                </p>
+            `;
+
+            modal.style.display = 'block';
+        }
+
+        // ===== EXPORTAR/IMPORTAR =====
+        function exportarDatos() {
+            const datos = {
+                patrimonio,
+                relacionesPuntos,
+                logrosDesbloqueados,
+                historial,
+                objetivos,
+                stats,
+                fechaExportacion: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `broncano-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            mostrarFraseBroncano('¡Datos exportados correctamente! 💾');
+        }
+
+        function importarDatos(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const datos = JSON.parse(e.target.result);
+
+                    if (confirm('¿Estás seguro de que quieres importar estos datos? Se sobrescribirán los datos actuales.')) {
+                        patrimonio = datos.patrimonio || 0;
+                        relacionesPuntos = datos.relacionesPuntos || 0;
+                        logrosDesbloqueados = datos.logrosDesbloqueados || [];
+                        historial = datos.historial || [];
+                        objetivos = datos.objetivos || {};
+                        stats = datos.stats || stats;
+
+                        localStorage.setItem('broncano_patrimonio', patrimonio);
+                        localStorage.setItem('broncano_relaciones', relacionesPuntos);
+                        localStorage.setItem('broncano_logros', JSON.stringify(logrosDesbloqueados));
+                        localStorage.setItem('broncano_historial', JSON.stringify(historial));
+                        localStorage.setItem('broncano_objetivos', JSON.stringify(objetivos));
+                        localStorage.setItem('broncano_stats', JSON.stringify(stats));
+
+                        actualizarDisplays();
+                        mostrarFraseBroncano('¡Datos importados correctamente! 📂');
+                    }
+                } catch (error) {
+                    alert('Error al importar el archivo. Asegúrate de que es un archivo válido.');
+                }
+            };
+            reader.readAsText(file);
+            input.value = '';
+        }
+
+        // ===== MODO PÁNICO =====
+        function togglePanicMode() {
+            document.body.classList.toggle('panic-mode');
+        }
+
+        // Salir del modo pánico al presionar ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.body.classList.contains('panic-mode')) {
+                togglePanicMode();
+            }
+        });
+
+        // ===== MODALES =====
+        function cerrarModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        };
+
+        // ===== EVENTOS =====
         document.getElementById('patrimonioInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 modificarPatrimonio(true);
             }
         });
 
-        // Inicializar displays
-        actualizarDisplays();
-
         // Easter egg: Ctrl + Shift + B para borrar todo
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.shiftKey && e.key === 'B') {
-                if (confirm('⚠️ ¿Borrar TODOS los datos? (Patrimonio y Relaciones)')) {
-                    localStorage.removeItem('broncano_patrimonio');
-                    localStorage.removeItem('broncano_relaciones');
-                    patrimonio = 0;
-                    relacionesPuntos = 0;
-                    actualizarDisplays();
-                    alert('🗑️ Todos los datos han sido borrados');
+                if (confirm('⚠️ ¿Borrar TODOS los datos? (Patrimonio, Relaciones, Logros e Historial)')) {
+                    localStorage.clear();
+                    location.reload();
                 }
             }
         });
+
+        // ===== INICIALIZACIÓN =====
+        actualizarDisplays();
+        mostrarLogros();
+
+        // Verificar logro de primer día
+        if (!logrosDesbloqueados.includes('primerdia')) {
+            desbloquearLogro(logrosDefinicion.find(l => l.id === 'primerdia'));
+        }
     </script>
 </body>
 </html>
