@@ -636,10 +636,10 @@
         </div>
 
         <!-- Sección Patrimonio -->
-        <div class="section">
+        <div class="section" id="patrimonioSection">
             <h2 class="section-title"><span class="emoji">💰</span> PREGUNTA 1: ¿CUÁNTO DINERO TIENES?</h2>
 
-            <div class="display">
+            <div class="display" id="patrimonioDisplayBox">
                 <div class="display-label">Patrimonio Total</div>
                 <div class="display-value">
                     <span id="patrimonioDisplay">0</span><span class="display-currency">€</span>
@@ -669,10 +669,10 @@
         </div>
 
         <!-- Sección Relaciones -->
-        <div class="section">
+        <div class="section" id="relacionesSection">
             <h2 class="section-title"><span class="emoji">🔥</span> PREGUNTA 2: ¿CUÁNTAS VECES ESTE MES?</h2>
 
-            <div class="display">
+            <div class="display" id="relacionesDisplayBox">
                 <div class="display-label">Puntuación Total del Mes</div>
                 <div class="display-value">
                     <span id="relacionesDisplay">0</span><span class="display-currency">pts</span>
@@ -890,7 +890,7 @@
 
             localStorage.setItem('broncano_patrimonio', patrimonio);
 
-            const display = document.querySelector('.section:first-of-type .display');
+            const display = document.getElementById('patrimonioDisplayBox');
             display.classList.add('pulse');
             setTimeout(() => display.classList.remove('pulse'), 500);
 
@@ -914,7 +914,7 @@
             localStorage.setItem('broncano_relaciones', relacionesPuntos);
             localStorage.setItem('broncano_stats', JSON.stringify(stats));
 
-            const display = document.querySelector('.section:nth-of-type(2) .display');
+            const display = document.getElementById('relacionesDisplayBox');
             display.classList.add('pulse');
             setTimeout(() => display.classList.remove('pulse'), 500);
 
